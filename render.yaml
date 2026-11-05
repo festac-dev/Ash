@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: ash
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /readyz
+    numInstances: 1
+    disk:
+      name: ash-data
+      mountPath: /var/lib/ash
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ASH_BIND_HOST
+        value: 0.0.0.0
+      - key: ASH_SERVER_PORT
+        value: "10000"
+      - key: ASH_SERVER_ALLOW_REMOTE
+        value: "true"
+      - key: ASH_SERVER_UI
+        value: "true"
+      - key: ASH_SERVER_SECURE_COOKIES
+        value: always
+      - key: ASH_PUBLIC_URL
+        sync: false
+      - key: ASH_SERVER_TOKEN
+        generateValue: true
+      - key: ASH_MODEL_PROVIDER
+        value: openai-compatible
+      - key: ASH_MODEL_BASE_URL
+        value: https://api.openai.com/v1
+      - key: ASH_MODEL_NAME
+        sync: false
+      - key: ASH_MODEL_API_KEY
+        sync: false
+      - key: MARKET_API_TOKEN
+        sync: false

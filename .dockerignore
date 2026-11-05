@@ -1,0 +1,13 @@
+.git
+node_modules
+dist
+.env*
+!.env.example
+.ash-data
+.ash-demo
+data
+transactions
+*.pem
+*.key
+*.log
+docs/screenshots

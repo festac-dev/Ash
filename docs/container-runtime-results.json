@@ -1,0 +1,21 @@
+{
+  "simulated_infrastructure": false,
+  "container_runtime": false,
+  "mode": "docker",
+  "started_at": "2026-11-04T20:42:23.234Z",
+  "runtime": {
+    "node": "v22.23.3",
+    "platform": "linux",
+    "arch": "arm64"
+  },
+  "hosted_deployment": false,
+  "ok": false,
+  "negative_checks": [],
+  "scenarios": [],
+  "limitations": [],
+  "failure": {
+    "stage": "Docker daemon preflight",
+    "reason": "No reachable Docker daemon. Start Docker, build ash:ci, then rerun npm run test:container."
+  },
+  "completed_at": "2026-11-04T20:42:23.623Z"
+}

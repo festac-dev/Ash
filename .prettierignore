@@ -1,0 +1,9 @@
+node_modules
+dist
+.ash-data
+.ash-demo
+package-lock.json
+tui/go.sum
+docs/screenshots
+docs/*results.json
+docs/reviews

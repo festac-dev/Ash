@@ -1,0 +1,96 @@
+name: Checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clear evidence from previous runs
+        if: runner.os == 'Linux'
+        run: rm -f docs/deployment-simulation-results.json docs/frontend-browser-results.json docs/screenshots/frontend-*.png docs/screenshots/workspace-*.png docs/screenshots/controls-*.png
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.27.3"
+          cache-dependency-path: tui/go.sum
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run security
+      - run: npm run validate:deploy
+      - run: npm test
+      - run: npm run test:tui
+      - name: Go dependency integrity and vulnerability scan
+        if: runner.os == 'Linux'
+        working-directory: tui
+        run: |
+          go mod verify
+          go run golang.org/x/vuln/cmd/govulncheck@v1.9.0 ./...
+      - run: npm run build
+      - if: runner.os != 'Windows'
+        run: npm run test:production
+      - name: Offline demo smoke (normal planner, approvals, engine and receipts)
+        run: npm run demo -- --headless --json
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends nginx openssl
+      - if: runner.os == 'Linux'
+        run: npm run test:deployments
+      - if: runner.os == 'Linux'
+        run: npm run test:remote-tls
+      - if: runner.os == 'Linux'
+        run: npx playwright install --with-deps chromium
+      - if: runner.os == 'Linux'
+        run: npm run test:web
+      - name: Keep browser evidence
+        if: always() && runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-evidence
+          path: |
+            docs/frontend-browser-results.json
+            docs/deployment-simulation-results.json
+            docs/screenshots/frontend-*.png
+            docs/screenshots/workspace-*.png
+            docs/screenshots/controls-*.png
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clear previous container evidence
+        run: rm -f docs/container-runtime-results.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          load: true
+          tags: ash:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - run: npm run test:container
+      - name: Keep container runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: container-evidence
+          path: docs/container-runtime-results.json

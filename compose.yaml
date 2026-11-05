@@ -1,0 +1,28 @@
+services:
+  ash:
+    build: .
+    init: true
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      ASH_DATA_DIR: /var/lib/ash
+      ASH_BIND_HOST: 0.0.0.0
+      ASH_SERVER_ALLOW_REMOTE: "true"
+      ASH_SERVER_PORT: "5050"
+      ASH_SERVER_UI: "true"
+      ASH_SERVER_SECURE_COOKIES: always
+    ports:
+      - "127.0.0.1:5050:5050"
+    volumes:
+      - ash-data:/var/lib/ash
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 45s
+    ulimits:
+      core: { soft: 0, hard: 0 }
+volumes:
+  ash-data:

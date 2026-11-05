@@ -1,0 +1,1341 @@
+{
+  "review_date": "2026-11-03",
+  "scope": "166 inventoried ASH project files; review reports added separately",
+  "excludes": [
+    ".git internals",
+    ".env/private credentials",
+    "runtime task data",
+    "node_modules third-party source",
+    "dist compiled output"
+  ],
+  "files": [
+    {
+      "file": ".env.example",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3241,
+      "lines": 68,
+      "sha256": "b7c63b320edc9094fda180503678805195c6b104917c8d472b4384cadea68793"
+    },
+    {
+      "file": ".github/workflows/check.yml",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2046,
+      "lines": 61,
+      "sha256": "5ef42a213c0b06d3dee77fa089283b269a040eca042ea8a9069ddf82a4f91f1c"
+    },
+    {
+      "file": ".gitignore",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 158,
+      "lines": 18,
+      "sha256": "02d88474da1b27c749f9ca5e695df79626e259db9e4f39672729a5e0f63257ae"
+    },
+    {
+      "file": "ARCHITECTURE.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 13825,
+      "lines": 202,
+      "sha256": "b3c9742ebd9f83ad06c33f9224bde13aa5d44ff6cc3a2019a3ab4a5c2f3bcbc7"
+    },
+    {
+      "file": "COMMANDS.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 11123,
+      "lines": 280,
+      "sha256": "a20bb9906e0ca9fbe5e87f21ca453bff6509bf213714336b19d49141eca5cfd2"
+    },
+    {
+      "file": "CONFIGURATION.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 10240,
+      "lines": 179,
+      "sha256": "4ade8ddf474d13cbef1893069a00a1da347bd69a36e03933886f025fa21ddd7d"
+    },
+    {
+      "file": "INSTALL.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 7288,
+      "lines": 211,
+      "sha256": "4d527716c12a6a84c9811b771502384f196322abbff64c78ce091ce7dc3b584d"
+    },
+    {
+      "file": "LICENSE",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 11357,
+      "lines": 201,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "file": "README.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 20410,
+      "lines": 270,
+      "sha256": "53dc03b302fb76a36b904f1060e16347032b7acba7a895b9ce0fb2aed1d0c6a1"
+    },
+    {
+      "file": "SECURITY.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 9908,
+      "lines": 143,
+      "sha256": "06d41ab1838f562c9670d729e36a75d0ca80ed339b7a88e743022d5dcd60427b"
+    },
+    {
+      "file": "TRANSACTIONS.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 8532,
+      "lines": 177,
+      "sha256": "201bdd9487a31b8a792af6733aa6514250084f9777625c63f69339021c96ead9"
+    },
+    {
+      "file": "TROUBLESHOOTING.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 15636,
+      "lines": 334,
+      "sha256": "3c1f9a12260d7a804e5536fad8c4e27ea29cb279c76adec9d5564a03f877ec6a"
+    },
+    {
+      "file": "deploy/nginx-ash.conf.template",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 623,
+      "lines": 19,
+      "sha256": "cbed0b5c7ef9ff34dd3da670e507ccd001483e5b0bf735b0d4ea9e87c972d41a"
+    },
+    {
+      "file": "docs/API.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 12952,
+      "lines": 339,
+      "sha256": "ac8d21f79e3690d710d99cfb162a8e8a25db210505463a0ece9c2cfee71fbf3b"
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 9925,
+      "lines": 154,
+      "sha256": "95d20d01946a8390635274109acd36de286cc2a07c815bc9626e72cc83bc604d"
+    },
+    {
+      "file": "docs/ARCHITECTURE_AUDIT.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 11054,
+      "lines": 174,
+      "sha256": "427fcdf615ee04401423a1ea1a3f41a8fd18a71d06403471ef4c0515b7891d1a"
+    },
+    {
+      "file": "docs/DEVELOPMENT.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 6330,
+      "lines": 163,
+      "sha256": "4c4531b043e998d5d3533c7d8459a11559643adcd70c45c34e2b01bff45ecdff"
+    },
+    {
+      "file": "docs/FRONTEND.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 12841,
+      "lines": 138,
+      "sha256": "2b8128e6b8750bfeb1915464c6a1400f2ac92998d09fa65a0256e9f87e4a368b"
+    },
+    {
+      "file": "docs/NEAR_TRACKS.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 5950,
+      "lines": 31,
+      "sha256": "a248c33bbbfd0feb8e4e1b44ff3d1c92d294ddee37f80467d93798c1eae52cd1"
+    },
+    {
+      "file": "docs/REMOTE.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 9795,
+      "lines": 214,
+      "sha256": "81307efe8a90b012dae7491e9656d5c490f52e5bfcf6e2cc42ae65eaee0ea3ce"
+    },
+    {
+      "file": "docs/SECURITY.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 8058,
+      "lines": 117,
+      "sha256": "7434946cdb5afb540b7b295908373f1d5a6646bfbcce10db42f98ad1bb99c7b0"
+    },
+    {
+      "file": "docs/TUI_GUIDE.md",
+      "category": "documentation",
+      "method": "manual read and source cross-check",
+      "bytes": 16131,
+      "lines": 264,
+      "sha256": "7819aba5850d98df62c9bbc83a8af451c1b3c40068632ff6f452026883202828"
+    },
+    {
+      "file": "docs/frontend-browser-results.json",
+      "category": "generated metadata",
+      "method": "structural/dependency/checksum or measurement review",
+      "bytes": 2106,
+      "lines": 40,
+      "sha256": "121d7414cfe0eb4a2ef81ed13f295ddd923cac588cf4bda1da652db68f3d9490"
+    },
+    {
+      "file": "docs/frontend-lighthouse-results.json",
+      "category": "generated metadata",
+      "method": "structural/dependency/checksum or measurement review",
+      "bytes": 5553,
+      "lines": 95,
+      "sha256": "8db08dd4401ffaaaed8da32b5479a11141669424230ff573d3f7e18ea3899e67"
+    },
+    {
+      "file": "docs/screenshots/cli-chat.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 41048,
+      "lines": null,
+      "sha256": "bdcb814cb3d1f90009e57e268c644078360b41adeea958f19c3a40cd4153efca"
+    },
+    {
+      "file": "docs/screenshots/cli-compact.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 25506,
+      "lines": null,
+      "sha256": "d9b1709117ce2c6f0c46ccb1db392962afc55fbd01ad63ada81851a2b76c306a"
+    },
+    {
+      "file": "docs/screenshots/cli-home.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 36765,
+      "lines": null,
+      "sha256": "5b26db7f55126be7a9c7ac6dfd366da977dbe30ba9928053ceba60d521ef21c8"
+    },
+    {
+      "file": "docs/screenshots/cli-task-form.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 29580,
+      "lines": null,
+      "sha256": "83c17d848de3a1173140e635fd87667eb37ac3c1efbf3fbbfd0cb29d3f5fa414"
+    },
+    {
+      "file": "docs/screenshots/frontend-connected.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 453225,
+      "lines": null,
+      "sha256": "d92213ea8d4a8e687a3e781efac6caa55341866128fd6087217704afb365db3b"
+    },
+    {
+      "file": "docs/screenshots/frontend-dark.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 426166,
+      "lines": null,
+      "sha256": "cc510f9170bdb6ea399daebf697d05a6ccde458f78b6cae0907201447131e88f"
+    },
+    {
+      "file": "docs/screenshots/frontend-hero.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 306085,
+      "lines": null,
+      "sha256": "023e1eeeda167990e0911f1ac206d7eefe9db380a524bc6efcd9b79d39c42f60"
+    },
+    {
+      "file": "docs/screenshots/frontend-light.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 451444,
+      "lines": null,
+      "sha256": "39b9ac8707e8506d046cb0aab0ce383d7612e473b418c0c2aa998f870f683db1"
+    },
+    {
+      "file": "docs/screenshots/frontend-mobile.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 280958,
+      "lines": null,
+      "sha256": "1cd7c2e4839a4a190e594bb28e6d922977010a18692ffed3ac3484207f7adb5f"
+    },
+    {
+      "file": "docs/terminal-dashboard.png",
+      "category": "asset",
+      "method": "decoded/visually inspected",
+      "bytes": 36765,
+      "lines": null,
+      "sha256": "5b26db7f55126be7a9c7ac6dfd366da977dbe30ba9928053ceba60d521ef21c8"
+    },
+    {
+      "file": "frontend/index.html",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1186,
+      "lines": 20,
+      "sha256": "6f9facc05acd428acd2948f868e8860094a1e9499e3e7f4b3f05f7a759835535"
+    },
+    {
+      "file": "frontend/public/assets/ash-mark.svg",
+      "category": "asset",
+      "method": "parsed elements, executable/external references and browser use checked",
+      "bytes": 218,
+      "lines": 1,
+      "sha256": "bc952ef5824ff69853639582ccb1131305f247ef659d73162f1f7f45fcac26f0"
+    },
+    {
+      "file": "frontend/public/assets/globe-fallback.svg",
+      "category": "asset",
+      "method": "parsed elements, executable/external references and browser use checked",
+      "bytes": 40795,
+      "lines": 1,
+      "sha256": "4203f0f98ddc7abd4908b0a93d14afca9bf9f79264e70dd4913426d0557560e4"
+    },
+    {
+      "file": "frontend/public/assets/theme.js",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 184,
+      "lines": 3,
+      "sha256": "c7aa706ad757194e2ef58dcaed86244da4f3c816e30d5afe1a40f37ffb82427e"
+    },
+    {
+      "file": "frontend/src/App.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 16911,
+      "lines": 121,
+      "sha256": "9bf694ddb28bf6002ff86b5d33434742897ba01873c92b386a02d493bfa7af67"
+    },
+    {
+      "file": "frontend/src/components/Dialog.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 777,
+      "lines": 15,
+      "sha256": "bc5e075d26ff871fa532bf7306a0b9217bbaa6a31ddacac3ed66235feea271c2"
+    },
+    {
+      "file": "frontend/src/components/FeatureCard.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1254,
+      "lines": 24,
+      "sha256": "c1479903a163625a244b6bdc7532ca837eca0ce667c7ea8207c683be2c2d0c17"
+    },
+    {
+      "file": "frontend/src/components/PanelBoundary.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 494,
+      "lines": 10,
+      "sha256": "9ce021ed1057f3db1d211e366b9ca9c3a9aa9cbb88a91efb13a5980254b24b0a"
+    },
+    {
+      "file": "frontend/src/components/WorkspaceDialogs.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 8406,
+      "lines": 85,
+      "sha256": "4cada047a51f806e1142f45d5301760fac9b783890b492ec2e95e483461e0bcc"
+    },
+    {
+      "file": "frontend/src/components/globe/AshGlobe.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 4829,
+      "lines": 59,
+      "sha256": "7accdcba5e0781be881cfc7b38a64be250e26adaf94f2ace1856b4ea25f49e9e"
+    },
+    {
+      "file": "frontend/src/components/globe/GlobeScene.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 11811,
+      "lines": 202,
+      "sha256": "0460e7fd1ecc26afd3eae6f5109fbf1c5bcf77a2bda23941a59c5fd963ef5b4b"
+    },
+    {
+      "file": "frontend/src/lib/api.js",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 897,
+      "lines": 18,
+      "sha256": "6b155ed1c38dbfd1122e9a9e81bcd63f77eade5a72186b4818ee5600de3c25ea"
+    },
+    {
+      "file": "frontend/src/lib/network.js",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 6360,
+      "lines": 92,
+      "sha256": "014112d32f411ebffc3a80f2b7dc0849220f00766c7383de83f045ccd15c3c58"
+    },
+    {
+      "file": "frontend/src/lib/useAsh.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 5292,
+      "lines": 102,
+      "sha256": "c513bd31e7ce69a7af55df400f7a51a0cf5b3f48e69bca0d023f80c5f8e55985"
+    },
+    {
+      "file": "frontend/src/main.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 366,
+      "lines": 9,
+      "sha256": "dc4cb739caafec97c2c3d7eaa2d7a213c18beb5f5d998f3d40a24fad2ff48f37"
+    },
+    {
+      "file": "frontend/src/prerender.jsx",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 225,
+      "lines": 5,
+      "sha256": "e72cc955b1bb796c988059bde737b1cffdf5869918c9101f53ddff6084eece46"
+    },
+    {
+      "file": "frontend/src/styles.css",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 25581,
+      "lines": 231,
+      "sha256": "c8e2712f0a5bffbcf2be842ce350a716f5872b6bab68025b64d0e719dafe0ede"
+    },
+    {
+      "file": "frontend/vite.config.js",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1124,
+      "lines": 20,
+      "sha256": "16aa3ac8adf31ad72dd2c738a881d40b9b67d50983aed14fc6bed1fad933365f"
+    },
+    {
+      "file": "package-lock.json",
+      "category": "generated metadata",
+      "method": "structural/dependency/checksum or measurement review",
+      "bytes": 158179,
+      "lines": 4714,
+      "sha256": "fbea446fc71d30cb34cb1e3a4b17136ef3368e1610786b8b264ed38deb43fb5f"
+    },
+    {
+      "file": "package.json",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2486,
+      "lines": 72,
+      "sha256": "5c4c127d3d3575c18740f8e5b56ca9ad70de0f9ccf4755946c0942c27e5a9450"
+    },
+    {
+      "file": "scripts/ash.mjs",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2244,
+      "lines": 38,
+      "sha256": "fd1a01381b3c691be395b4cdaae20ffce1af5db4f2bdc6635f5962eb013cf18d"
+    },
+    {
+      "file": "scripts/build-server.mjs",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 774,
+      "lines": 17,
+      "sha256": "af4a80ae6a1a61835d4c09ad94546ac5a9bc3dd3685d4fd931feab3be3f23a05"
+    },
+    {
+      "file": "scripts/build-tui.mjs",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2057,
+      "lines": 57,
+      "sha256": "94a528b687af54a161d3bda8aef3dedc45853f84924185cefcc0ed490d237e47"
+    },
+    {
+      "file": "scripts/build-web.mjs",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2371,
+      "lines": 41,
+      "sha256": "c1561e2ec9d3e42b2faa00453039d6d41b99bb9eaba52706d7e31bc5406c54b4"
+    },
+    {
+      "file": "scripts/console-browser-checks.mjs",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3114,
+      "lines": 55,
+      "sha256": "bf067cce3edd5fb43544814fccd70e50c64b71372eabcb725e9f63da0433b4cb"
+    },
+    {
+      "file": "scripts/test-console.mjs",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 842,
+      "lines": 20,
+      "sha256": "d9eab60145d9094931e859809e94f7375e0a80d54b7300d78441677b371e70a4"
+    },
+    {
+      "file": "scripts/test-web.mjs",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 13124,
+      "lines": 162,
+      "sha256": "d2acb3347e44ce500f700814fbb5524560f02eaa49a4ae4b947fc38039d07867"
+    },
+    {
+      "file": "src/ai/chat.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 8641,
+      "lines": 142,
+      "sha256": "fc843987fc0948808616765844883680455d0d55aede980b52f5ad7327097815"
+    },
+    {
+      "file": "src/ai/model.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 24328,
+      "lines": 538,
+      "sha256": "18a9698eb4207136f9f01336d0ef1a096dc69bfb545a4c02cd7853a07dccf49c"
+    },
+    {
+      "file": "src/ai/planner.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3929,
+      "lines": 95,
+      "sha256": "914a3918e17e9bf0347f8a35a418f587546b9d6cbcf703db7aa5c480446c9e49"
+    },
+    {
+      "file": "src/ai/prompts.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 12339,
+      "lines": 244,
+      "sha256": "718b2d363b49415d3cd180b4702bdf0417e154d3e64b76dd18593238dd216976"
+    },
+    {
+      "file": "src/ai/verifier.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 13176,
+      "lines": 339,
+      "sha256": "6cf80e01df1917c233bc090b3100901d92de9d8d3908bc8cc55eb360e969c8dc"
+    },
+    {
+      "file": "src/ai/worker.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 5058,
+      "lines": 136,
+      "sha256": "b65a2e3da7de881dbb7290f7cb61fcf785c9ed539d76840956efa6666028ce9c"
+    },
+    {
+      "file": "src/cli/app.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 69920,
+      "lines": 1506,
+      "sha256": "0407994eb8e3d368c8555a1c3624e4e4159039f304c6e584259a76fd01360fa9"
+    },
+    {
+      "file": "src/cli/components.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3914,
+      "lines": 98,
+      "sha256": "9fa3608b003726d449577c723d76da81d9dd9b0e9ed29910e37ba7f94c0dff03"
+    },
+    {
+      "file": "src/cli/dashboard.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 17254,
+      "lines": 320,
+      "sha256": "a7327d769c544d1f132b28f2ff335d28098db020fb6648b349b03a5642c10c94"
+    },
+    {
+      "file": "src/cli/logo.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1322,
+      "lines": 36,
+      "sha256": "898961511d83cb867a48976a748e9f8af613b581505df3cd9ae71f825a1e09e8"
+    },
+    {
+      "file": "src/cli/services.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 6373,
+      "lines": 183,
+      "sha256": "34ff81b7cf7f432bffc57b349b10b128235f682032bc451e2c4cc7495a0607fc"
+    },
+    {
+      "file": "src/cli/splash.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 4701,
+      "lines": 103,
+      "sha256": "e0d6df1b68c972a9a7e4c927a00a493d87d7bdc66e319f88d69b4fc1970bb69a"
+    },
+    {
+      "file": "src/cli/theme.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 4441,
+      "lines": 158,
+      "sha256": "0b665d12d8bd11accd4944defaa0b652ad77d619c0d87c1effdb9b68f0ef3443"
+    },
+    {
+      "file": "src/cli/wizard.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 12084,
+      "lines": 269,
+      "sha256": "cf12410862599dcfd88936340c4caca170382d24626342636b4327cdc2dccd15"
+    },
+    {
+      "file": "src/config.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 17545,
+      "lines": 478,
+      "sha256": "fefc868f453cffe0e903a5973b9022cd5a2c9014a663ae6372c2b5047505d776"
+    },
+    {
+      "file": "src/demo.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2961,
+      "lines": 21,
+      "sha256": "9cab5cd4eafd805827b6c69fe5d76097e0f171a03a92515113e25fa277d4a668"
+    },
+    {
+      "file": "src/domain/plan.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 12024,
+      "lines": 307,
+      "sha256": "007d49b1b18d4a9efe80140b31c7736ba1c33ce1d7cd6e7aa0a29b5d91c5ec21"
+    },
+    {
+      "file": "src/domain/schemas.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 15904,
+      "lines": 450,
+      "sha256": "3b681f50a0929439c3439610aa7050534287a8db01e10a0b3da8523e19661228"
+    },
+    {
+      "file": "src/domain/types.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 9148,
+      "lines": 374,
+      "sha256": "895bb5bdc0e05af6e030f7b51eb38f9c68c899895a8c0d9a7a407c4eaf6ce3e1"
+    },
+    {
+      "file": "src/engine/engine.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 109731,
+      "lines": 2480,
+      "sha256": "57b52e6d0eb5fb3ec47ba1c25333922a7d305e4fe42ab8cf7b25f8cc0f7bacf7"
+    },
+    {
+      "file": "src/engine/helpers.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 5297,
+      "lines": 148,
+      "sha256": "6af1b432a4fbab43c8905642112cf34ccc0302a8d364381a5bc378e1d69400ad"
+    },
+    {
+      "file": "src/errors.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1876,
+      "lines": 66,
+      "sha256": "a95260d3a8c1d8103fe5e17e293306a3ebaa750134d413cb072ab7b9175ec3b1"
+    },
+    {
+      "file": "src/index.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1213,
+      "lines": 36,
+      "sha256": "5bd6d1d0e466f907ed11b8836e0a4b84795dade02cb878e61b5fab3ed96862d1"
+    },
+    {
+      "file": "src/launcher.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 29312,
+      "lines": 698,
+      "sha256": "c7ccbed377879966665c6fcb9973042370d1fc3c67c3faba2e3cccd4e70850c9"
+    },
+    {
+      "file": "src/ledger/ledger.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 9899,
+      "lines": 296,
+      "sha256": "5987998b51386adbefc5e39f0fc3956997242e84a3f2d250304788c1b4d802fd"
+    },
+    {
+      "file": "src/logger.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3686,
+      "lines": 116,
+      "sha256": "23feea690794076b88da5cbe1b114b0925b967674c6b88e29f241bf34c99d55f"
+    },
+    {
+      "file": "src/market/discovery.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 4478,
+      "lines": 116,
+      "sha256": "7e0af7444e96c4c2ef4dd4db8752d8bfbab67f85c6aa425251953cce41d1f70f"
+    },
+    {
+      "file": "src/market/mcp-adapter.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 29261,
+      "lines": 720,
+      "sha256": "6b68c43a4dad83aeaa415fe2ee325c6240f46e1a3a9e1b2f933ee83eae5a8e2a"
+    },
+    {
+      "file": "src/market/negotiation.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 6081,
+      "lines": 166,
+      "sha256": "8ef2d8f74c92bdd7c9389100e5a4610027c5836cb6c7dec9c8abd0d640fe1dce"
+    },
+    {
+      "file": "src/market/normalize.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 15777,
+      "lines": 396,
+      "sha256": "79292eef50c2e2e3e473db5b835b34f969d92e12b6ae82c9bace0cd1ced0761e"
+    },
+    {
+      "file": "src/market/simulated-adapter.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 27097,
+      "lines": 723,
+      "sha256": "132bc1d8f9e0fc7077766a907f854818f567fbe01faa6db357f41edef9326b36"
+    },
+    {
+      "file": "src/market/types.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 7211,
+      "lines": 270,
+      "sha256": "661fb7ab8faf009064c377b519ee0bce6f898a95d6245a441e59b283e0997b0b"
+    },
+    {
+      "file": "src/notify.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3192,
+      "lines": 96,
+      "sha256": "8aa8348ec06316b544ca2bad57712b339437cae66ef0db6edfb2a994a95fe6fe"
+    },
+    {
+      "file": "src/report.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 10872,
+      "lines": 219,
+      "sha256": "9e8d9a77aa67672395dab4407c00db4c450a3391e7bf2bc20dfc774cd70c4699"
+    },
+    {
+      "file": "src/security/approvals.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 8922,
+      "lines": 236,
+      "sha256": "a4cb7a3eb6a28c176b748d2a85b12fb9e87cffdc7879f60c136caf75ad10161d"
+    },
+    {
+      "file": "src/security/guard.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 17146,
+      "lines": 455,
+      "sha256": "88c8144070b838568168b76b25090169221e8359c917d3997bf7b82d95934955"
+    },
+    {
+      "file": "src/security/plan-approval.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3459,
+      "lines": 60,
+      "sha256": "9a417822d0a9e8d23e853432701d3204dc4c4cfb3b7b2d6801174a2cd8e7592f"
+    },
+    {
+      "file": "src/server/auth.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 5308,
+      "lines": 171,
+      "sha256": "a13fc64b1bcbd4865fdece5124ea93c5361e506b91a7de69b3e3b9f6e402c93b"
+    },
+    {
+      "file": "src/server/event-bus.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 860,
+      "lines": 32,
+      "sha256": "529e12bd15307839222723b9ce87477ce43cff1cb81fd65f9520b609784d6342"
+    },
+    {
+      "file": "src/server/frontend-build.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2050,
+      "lines": 38,
+      "sha256": "2884e52b537bf0735a7252830574283c687b559cf494343a734056fb41446bd0"
+    },
+    {
+      "file": "src/server/frontend.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2916,
+      "lines": 65,
+      "sha256": "fc401b55699ea8357c8276c24a920e86cb296fe551eae9a0258e8f877d3bdc77"
+    },
+    {
+      "file": "src/server/main.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2211,
+      "lines": 54,
+      "sha256": "dd8b24b6282fd20cea10e41723b46c0fab2541f8eb68de934155d33a584395a1"
+    },
+    {
+      "file": "src/server/server.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 32490,
+      "lines": 922,
+      "sha256": "5205ec3ef3c49cbc357fda83630b4e44cdd590fd3daf40b4b83e92b0faa94450"
+    },
+    {
+      "file": "src/server/service.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 29009,
+      "lines": 682,
+      "sha256": "9b3d2e25a2949ad41ac4cb15c3e0501a068eeeb61b0a716b7750cca29964f555"
+    },
+    {
+      "file": "src/state/store.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 19467,
+      "lines": 493,
+      "sha256": "e3caacd7cadc7698f3bdbdcca297ae9fb24712a3a19ea7855b3798dcebfd7c7a"
+    },
+    {
+      "file": "src/tracks.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 20812,
+      "lines": 393,
+      "sha256": "8ca6821916deed09f7dc91f527d3efc6afbcc7a14f02e68e3eae14cc9b40fa70"
+    },
+    {
+      "file": "src/transactions/ledger.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 21960,
+      "lines": 547,
+      "sha256": "5f7e5a5325f3d22e53a3a2c735baefbd5cccee6c3555e0c37f89546b21a155ee"
+    },
+    {
+      "file": "src/util/async.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2662,
+      "lines": 70,
+      "sha256": "956d14504cc13da522fa0393c3761bcb4043d7ad776a17635589ad71f6fa801c"
+    },
+    {
+      "file": "src/util/fs.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 9888,
+      "lines": 262,
+      "sha256": "0f0ccaea5a93bcb117126d3d08b6a11a044fb70ded9e6a9a3a2a5f3966ca7256"
+    },
+    {
+      "file": "src/util/ids.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 544,
+      "lines": 18,
+      "sha256": "8d07f887965253af29ebb6f010c5fbdc0b84281807fe58e4791897c38e0d46ac"
+    },
+    {
+      "file": "src/util/json.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3079,
+      "lines": 87,
+      "sha256": "7081b831765597d371807466362ae7aedc9cf87f1573c17702216ecd611485ba"
+    },
+    {
+      "file": "src/util/money.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3184,
+      "lines": 94,
+      "sha256": "8289616db9775f751b2767156ae27a32a5a2db4cadd62f976b37257b2e59a765"
+    },
+    {
+      "file": "src/util/redact.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2265,
+      "lines": 60,
+      "sha256": "2fba26adf609cd04a991c0d022584ecf6545240e4c6b4a4d4f442637e9b95c2e"
+    },
+    {
+      "file": "src/util/strings.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 4253,
+      "lines": 88,
+      "sha256": "41c072241025e0635cbba490513c51d9d87ea58ced67be01edd1ffffae101b6f"
+    },
+    {
+      "file": "src/util/time.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1514,
+      "lines": 44,
+      "sha256": "c505140342b42a522878bedaf7a3b4c59fa4a1a253891c9aff116a7b0eb2707e"
+    },
+    {
+      "file": "src/version.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 108,
+      "lines": 3,
+      "sha256": "28406034b0e8465ac5ebae5727416bff6e69e23d4379ad5bf882a5c4bab65597"
+    },
+    {
+      "file": "tests/chat.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 7478,
+      "lines": 129,
+      "sha256": "05198ec8ca3c8cc6ac065813c13c6b57789bdca61a7957abe8ae803ad577c34b"
+    },
+    {
+      "file": "tests/cli.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 9728,
+      "lines": 220,
+      "sha256": "6d3b1ea08bf3f913781dbabdabac2419f000ef124adbaebe84de9f0ea0156ad0"
+    },
+    {
+      "file": "tests/engine.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 33267,
+      "lines": 701,
+      "sha256": "ec7ea4c9a2f00791bbafe7d40eefb315dfd68b87837c499df063c27310acc071"
+    },
+    {
+      "file": "tests/frontend.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 6166,
+      "lines": 101,
+      "sha256": "d9e48bb4dde4084d7411f05f4c9c1566192d823b33353d37e4b3e0790470f855"
+    },
+    {
+      "file": "tests/globe-adapter.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2568,
+      "lines": 35,
+      "sha256": "9f1806d6cdc4a3bfa733c0a12acd67d0ef68836c9a8eb9fc3f06c823b754fb12"
+    },
+    {
+      "file": "tests/helpers.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1460,
+      "lines": 46,
+      "sha256": "03b76e03f65aa6d2ec70bc82f1382a494d42036f93dcd9de6978b6f604847144"
+    },
+    {
+      "file": "tests/launcher-build.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2635,
+      "lines": 45,
+      "sha256": "424bdb51396825e455b6dee430b999cbf166fbfffc33116ec88e93765a87778f"
+    },
+    {
+      "file": "tests/launcher.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3605,
+      "lines": 60,
+      "sha256": "2664be53c1e4fc7d8695bc476fab68803a6a11f8ccf6be8802d85f98f95d7190"
+    },
+    {
+      "file": "tests/ledger.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3186,
+      "lines": 62,
+      "sha256": "6cd9ac23d84e7e760a8dfb4edbaa4e56eb132b42f1b3f36b1af562b4d7eebcaf"
+    },
+    {
+      "file": "tests/market.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 7312,
+      "lines": 170,
+      "sha256": "11aa978db55925eeed4206daea85f8c635b3dcecb01e7bdda5ef971ac651cf53"
+    },
+    {
+      "file": "tests/mcp.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 9559,
+      "lines": 184,
+      "sha256": "2b6baeaa1c6b4c214982c230acbb6031c7821612d10d0630487f2cf69b90ea73"
+    },
+    {
+      "file": "tests/model.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1000,
+      "lines": 25,
+      "sha256": "6d8e43fe2353514db150bdcaf7be3c51122c7b5033df2835764b2106618db22e"
+    },
+    {
+      "file": "tests/money.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1486,
+      "lines": 34,
+      "sha256": "1e5397a3ce4fa3a1e0d481f93ab7c5b482cce128f8d2024141352ad8c884b515"
+    },
+    {
+      "file": "tests/notify.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2032,
+      "lines": 50,
+      "sha256": "8aa61931867fdae51066be703d2e38cfade0a6cf6fa94bce0e6eac3c8b678b42"
+    },
+    {
+      "file": "tests/planner.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 7651,
+      "lines": 200,
+      "sha256": "97c8c9f698325afafeb53faf440bee2d68d2d0f324263a2a06e2294693048c60"
+    },
+    {
+      "file": "tests/remote.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 7974,
+      "lines": 201,
+      "sha256": "2513acaf3114bd18646b5f4fbf1c4392a2677b6f39202cf900b9ad4742d5a668"
+    },
+    {
+      "file": "tests/security.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 9721,
+      "lines": 230,
+      "sha256": "45b4a74c0803ed925346a6912da4ab3c46d7d78d8d7cb7b26da08bba8f808fc6"
+    },
+    {
+      "file": "tests/server.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 22262,
+      "lines": 446,
+      "sha256": "916783157f32f41602a5efe8ebe74acecd7b4e9b5fbb0cff67e7675eb7371669"
+    },
+    {
+      "file": "tests/showcase.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 4133,
+      "lines": 75,
+      "sha256": "c20cfefdd603e904070ec3e00ea782d69478f4b1dbb05d14f68637608487d547"
+    },
+    {
+      "file": "tests/state.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 5014,
+      "lines": 94,
+      "sha256": "3dc6b313def58dbd618614e75c7a7ed27b1772eb7a89fd3a55ded5797e706aca"
+    },
+    {
+      "file": "tests/tls-proxy.integration.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 6554,
+      "lines": 99,
+      "sha256": "618692396b3aa9ab012877e23d95cb7ae7e76d16a6c7e81c212592566b060e27"
+    },
+    {
+      "file": "tests/tracks.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 10286,
+      "lines": 270,
+      "sha256": "aadb3daee07b16f827f166b3fa3c78a0ae3c019446905ab7117050c8105f1607"
+    },
+    {
+      "file": "tests/transactions.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 12863,
+      "lines": 281,
+      "sha256": "60cb7e6af22508018653a7de6a3a1ee236f4c8815c57edd73298bab6b3e9d31b"
+    },
+    {
+      "file": "tests/util.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 5445,
+      "lines": 107,
+      "sha256": "42065d3b2e7d099776b064ed26de7bf6c0942add916d4ee95c90f590769b7a94"
+    },
+    {
+      "file": "tests/verifier.test.ts",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 10227,
+      "lines": 250,
+      "sha256": "e80d5e2a69b7104db955dd388b235d8fa97caba8dafc10fb5af31a2d9234b49c"
+    },
+    {
+      "file": "tsconfig.json",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 643,
+      "lines": 33,
+      "sha256": "06d11fc1020b028114803266938de19961cc5a2c8ea8bf9a203e40492eb4c869"
+    },
+    {
+      "file": "tsconfig.tests.json",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 669,
+      "lines": 34,
+      "sha256": "ccd105e0a414f4e7089e07e9a0c968c4934c48a9bcc3691d07f4f05998c9e1d8"
+    },
+    {
+      "file": "tui/go.mod",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1263,
+      "lines": 31,
+      "sha256": "c3efdbeb173cfc64cc13c8e45989c4f6e217c8882e867be198982cfebca61d6a"
+    },
+    {
+      "file": "tui/go.sum",
+      "category": "generated metadata",
+      "method": "structural/dependency/checksum or measurement review",
+      "bytes": 5277,
+      "lines": 55,
+      "sha256": "61142b66a93a7c97074d9b9d96151cef0dd64c89eafe492ab7ce77c31aabca51"
+    },
+    {
+      "file": "tui/internal/api/client.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 14204,
+      "lines": 485,
+      "sha256": "9c64f7820b8ac616de31bc74c1ccb3e09e37eea06c468901cb0be415aa22eabe"
+    },
+    {
+      "file": "tui/internal/api/client_test.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 5290,
+      "lines": 153,
+      "sha256": "c5173942119d2559110dbd74fcc3d1955a2d5fd4f18df98740ba1891e1474038"
+    },
+    {
+      "file": "tui/internal/api/types.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 15996,
+      "lines": 439,
+      "sha256": "6faa85fd5092838c26c43b98f387032f912e10e21342629fce495b9fad9adb59"
+    },
+    {
+      "file": "tui/internal/ui/chat.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 11909,
+      "lines": 382,
+      "sha256": "21808551e5b789a0bcf9a4df94374465c5d93177c82b13edbaa7d2271d577c7b"
+    },
+    {
+      "file": "tui/internal/ui/chat_test.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 7039,
+      "lines": 196,
+      "sha256": "d27142bf9d462ea2410e8ce1c2e5a8168ca1f35575f697c8b2f2ef52339be81f"
+    },
+    {
+      "file": "tui/internal/ui/forms.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 7001,
+      "lines": 286,
+      "sha256": "0b4b60db163dc8a859cdc31765fced4ffcd54fba89e90bdb7ac07ca29c0206e5"
+    },
+    {
+      "file": "tui/internal/ui/frontend.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1734,
+      "lines": 71,
+      "sha256": "2afd8d5d46dcacfe4953ba364e9a0597dcffcbdcd79a3f16510e936a02242781"
+    },
+    {
+      "file": "tui/internal/ui/frontend_test.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 1833,
+      "lines": 63,
+      "sha256": "569922fd48d2821e573198951c7daf84233c3dd08739c111c4a8b9d3c349de9d"
+    },
+    {
+      "file": "tui/internal/ui/mission.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 19416,
+      "lines": 574,
+      "sha256": "97455cf91d727f548cc07cf1495e66d4994b8cbb1bf48c8e0ca50cdb4dd1a633"
+    },
+    {
+      "file": "tui/internal/ui/mission_test.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 8098,
+      "lines": 235,
+      "sha256": "8833b0def8a9c1a2b12b6ba04c769bd0042660c2a3ff17af82831088c74132a6"
+    },
+    {
+      "file": "tui/internal/ui/model.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 48296,
+      "lines": 1883,
+      "sha256": "6d6d336744674d513025a4196149b560d9b37bb41a646b828f1ac02815f54c1d"
+    },
+    {
+      "file": "tui/internal/ui/model_test.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3620,
+      "lines": 129,
+      "sha256": "8f31dc4753350844e97bbf4ff57762492a5fe83a782ac9e23c1b5be816b5f988"
+    },
+    {
+      "file": "tui/internal/ui/review_test.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3727,
+      "lines": 117,
+      "sha256": "09647b03fd755b1c7b70ed68768b5e25b618ffa3f97a40219e41831ad781ff10"
+    },
+    {
+      "file": "tui/internal/ui/settings.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 2587,
+      "lines": 98,
+      "sha256": "6009b8c2d222308906657abcad8db04a839f0a35543b3d2dc31a72ecfee4c795"
+    },
+    {
+      "file": "tui/internal/ui/styles.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 6002,
+      "lines": 199,
+      "sha256": "78e39ba420152cdbeadfee7c5716a25bd3e1e27dfd523ba3d8b1b44a83262e88"
+    },
+    {
+      "file": "tui/internal/ui/views.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 23895,
+      "lines": 753,
+      "sha256": "d8b65a02746561236dd8657afb23cc118c6fca367744b65a8ffba1f9403db545"
+    },
+    {
+      "file": "tui/main.go",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 717,
+      "lines": 35,
+      "sha256": "866826d277e5e748c0bd609ea28b5ef5fc70f96a46b05546d65e7727419ebff4"
+    },
+    {
+      "file": "web/app.js",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 61568,
+      "lines": 1546,
+      "sha256": "ccfe23a143343fc1a415de8fa8c4dea9bf04152670f16729ed157889fb1325c5"
+    },
+    {
+      "file": "web/index.html",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 3425,
+      "lines": 87,
+      "sha256": "12ff20e4b7c9456571773f0ddf7473e83f6841113bc8f404b43d12bf70509c7a"
+    },
+    {
+      "file": "web/styles.css",
+      "category": "source/test/configuration",
+      "method": "manual source review; relevant automated checks",
+      "bytes": 14766,
+      "lines": 902,
+      "sha256": "06feca0031b41c531e1b596f63911af4112d1c79728d9a7b30d70b36f4d03c7c"
+    }
+  ]
+}

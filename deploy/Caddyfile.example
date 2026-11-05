@@ -1,0 +1,8 @@
+ash.example.com {
+    encode zstd gzip
+    @administration path /api/frontend /api/frontend/* /api/auth/ticket
+    respond @administration 403
+    reverse_proxy 127.0.0.1:5050
+    header Strict-Transport-Security "max-age=31536000"
+    # Keep access logging disabled: application logs contain redacted operational events.
+}

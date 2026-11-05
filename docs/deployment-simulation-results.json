@@ -1,0 +1,123 @@
+{
+  "simulated_infrastructure": true,
+  "container_runtime": false,
+  "mode": "hosting-simulation",
+  "started_at": "2026-11-04T20:28:02.440Z",
+  "runtime": {
+    "node": "v26.12.1",
+    "platform": "android",
+    "arch": "arm64"
+  },
+  "hosted_deployment": false,
+  "ok": true,
+  "negative_checks": [
+    "missing model configuration",
+    "demo prohibited in production",
+    "public plain HTTP refused",
+    "invalid storage mount",
+    "occupied bind port",
+    "missing entry HTML",
+    "missing entry script",
+    "failed frontend activation stays OFF"
+  ],
+  "scenarios": [
+    {
+      "name": "Docker Compose",
+      "passed": true,
+      "checks": [
+        "startup, readiness, manifest UI default and unauthenticated denial",
+        "landing, workspace and task controls served through deployment proxy",
+        "private CLI code, HTTPS/SSH-forwarded login, cookie policy, replay and proxy admin denial",
+        "CSRF, real draft persistence and unbuffered SSE",
+        "SIGTERM with SSE, persistent restart, session/code revocation and no automatic spending",
+        "storage outage returns 503 while liveness stays up; recovery and private file modes",
+        "quiesced backup copied and restored into a new data directory",
+        "process crash/restart preserves restored state",
+        "restored task, logout-all, frontend OFF and credential-free service logs"
+      ]
+    },
+    {
+      "name": "Render",
+      "passed": true,
+      "checks": [
+        "startup, readiness, manifest UI default and unauthenticated denial",
+        "landing, workspace and task controls served through deployment proxy",
+        "private CLI code, HTTPS/SSH-forwarded login, cookie policy, replay and proxy admin denial",
+        "CSRF, real draft persistence and unbuffered SSE",
+        "SIGTERM with SSE, persistent restart, session/code revocation and no automatic spending",
+        "storage outage returns 503 while liveness stays up; recovery and private file modes",
+        "quiesced backup copied and restored into a new data directory",
+        "process crash/restart preserves restored state",
+        "restored task, logout-all, frontend OFF and credential-free service logs"
+      ]
+    },
+    {
+      "name": "Railway dynamic PORT",
+      "passed": true,
+      "checks": [
+        "startup, readiness, manifest UI default and unauthenticated denial",
+        "landing, workspace and task controls served through deployment proxy",
+        "private CLI code, HTTPS/SSH-forwarded login, cookie policy, replay and proxy admin denial",
+        "CSRF, real draft persistence and unbuffered SSE",
+        "SIGTERM with SSE, persistent restart, session/code revocation and no automatic spending",
+        "storage outage returns 503 while liveness stays up; recovery and private file modes",
+        "quiesced backup copied and restored into a new data directory",
+        "process crash/restart preserves restored state",
+        "restored task, logout-all, frontend OFF and credential-free service logs"
+      ]
+    },
+    {
+      "name": "Railway frontend OFF at boot",
+      "passed": true,
+      "checks": [
+        "startup, readiness, manifest UI default and unauthenticated denial",
+        "landing, workspace and task controls served through deployment proxy",
+        "private CLI code, HTTPS/SSH-forwarded login, cookie policy, replay and proxy admin denial",
+        "CSRF, real draft persistence and unbuffered SSE",
+        "SIGTERM with SSE, persistent restart, session/code revocation and no automatic spending",
+        "storage outage returns 503 while liveness stays up; recovery and private file modes",
+        "quiesced backup copied and restored into a new data directory",
+        "process crash/restart preserves restored state",
+        "restored task, logout-all, frontend OFF and credential-free service logs"
+      ]
+    },
+    {
+      "name": "Private server TLS",
+      "passed": true,
+      "checks": [
+        "startup, readiness, manifest UI default and unauthenticated denial",
+        "landing, workspace and task controls served through deployment proxy",
+        "private CLI code, HTTPS/SSH-forwarded login, cookie policy, replay and proxy admin denial",
+        "CSRF, real draft persistence and unbuffered SSE",
+        "SIGTERM with SSE, persistent restart, session/code revocation and no automatic spending",
+        "storage outage returns 503 while liveness stays up; recovery and private file modes",
+        "quiesced backup copied and restored into a new data directory",
+        "process crash/restart preserves restored state",
+        "restored task, logout-all, frontend OFF and credential-free service logs"
+      ]
+    },
+    {
+      "name": "Private server SSH forwarding",
+      "passed": true,
+      "checks": [
+        "startup, readiness, manifest UI default and unauthenticated denial",
+        "landing, workspace and task controls served through deployment proxy",
+        "private CLI code, HTTPS/SSH-forwarded login, cookie policy, replay and proxy admin denial",
+        "CSRF, real draft persistence and unbuffered SSE",
+        "SIGTERM with SSE, persistent restart, session/code revocation and no automatic spending",
+        "storage outage returns 503 while liveness stays up; recovery and private file modes",
+        "quiesced backup copied and restored into a new data directory",
+        "process crash/restart preserves restored state",
+        "restored task, logout-all, frontend OFF and credential-free service logs"
+      ]
+    }
+  ],
+  "limitations": [
+    "No containers, namespaces, cgroups, actual read-only mounts, platform edge routing or cloud account deployment",
+    "SSH forwarding transport modeled by a local proxy; SSH authentication is not emulated",
+    "Fixed platform ports and data paths remapped to private temporary resources",
+    "No model inference, marketplace calls or payments; no production demo-mode override"
+  ],
+  "network_guard_verified": true,
+  "completed_at": "2026-11-04T20:37:39.986Z"
+}
