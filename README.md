@@ -50,7 +50,7 @@ refuses demo mode. `ASH_DEMO=1` is the explicit environment opt-in; the older
 `ASH_SIMULATE` flag alone is rejected.
 
 For CI or a terminal-only walkthrough: `npm run demo -- --headless --json` completes
-the same engine flow, verifies receipts, prints results, and shuts down. See [DEMO.md](DEMO.md).
+the same engine flow, verifies receipts, prints results, and shuts down.
 
 ## What works
 
