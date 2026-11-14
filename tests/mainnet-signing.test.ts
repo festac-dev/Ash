@@ -286,17 +286,40 @@ test("uncertain broadcast retains its budget and reconciles without sending anot
   }
 });
 
-test("key-file permissions and function-call keys fail before signing", async () => {
+test("POSIX key-file permissions fail before signing", { skip: process.platform === "win32" }, async () => {
   const dir = await tempDir();
   try {
     const mock = await setup(dir);
     await fs.chmod(mock.file, 0o644);
     await assert.rejects(() => mock.send(input), /permissions 600/);
-    await fs.chmod(mock.file, 0o600);
+    assert.equal(mock.broadcasts(), 0);
+  } finally {
+    await cleanup(dir);
+  }
+});
+
+test("function-call keys fail before signing", async () => {
+  const dir = await tempDir();
+  try {
+    const mock = await setup(dir);
     mock.setPermission({
       FunctionCall: { receiver_id: "wrap.near", allowance: "1000", method_names: ["ft_transfer"] },
     });
     await assert.rejects(() => mock.send(input), /full-access/);
+    assert.equal(mock.broadcasts(), 0);
+  } finally {
+    await cleanup(dir);
+  }
+});
+
+test("symlinked signing keys fail before signing", async () => {
+  const dir = await tempDir();
+  try {
+    const mock = await setup(dir);
+    const target = path.join(dir, "key-target.json");
+    await fs.rename(mock.file, target);
+    await fs.symlink(target, mock.file, "file");
+    await assert.rejects(() => mock.send(input), /private regular file/);
     assert.equal(mock.broadcasts(), 0);
   } finally {
     await cleanup(dir);

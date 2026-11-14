@@ -120,8 +120,12 @@ test("device consent honors pending and slow-down, stores private tokens and nev
     assert.ok(!status.includes("private-"));
     assert.equal(redact("private-refresh-token"), "[REDACTED]");
     assert.equal(redact(challenge.device_code), "[REDACTED]");
-    assert.equal((await fs.stat(oauthFile(mock.config))).mode & 0o777, 0o600);
-    assert.equal((await fs.stat(path.dirname(oauthFile(mock.config)))).mode & 0o777, 0o700);
+    assert.ok((await fs.lstat(oauthFile(mock.config))).isFile());
+    assert.ok((await fs.lstat(path.dirname(oauthFile(mock.config)))).isDirectory());
+    if (process.platform !== "win32") {
+      assert.equal((await fs.stat(oauthFile(mock.config))).mode & 0o777, 0o600);
+      assert.equal((await fs.stat(path.dirname(oauthFile(mock.config)))).mode & 0o777, 0o700);
+    }
     await mock.oauth.start();
     assert.equal(mock.registrations(), 1);
   } finally {
@@ -170,7 +174,7 @@ test("denied consent, expired devices and refused refreshes fail without usable 
   }
 });
 
-test("untrusted discovery endpoints, loose file modes and symlinked tokens fail closed", async () => {
+test("untrusted discovery endpoints and symlinked tokens fail closed", async () => {
   const dir = await tempDir();
   try {
     const mock = provider(dir);
@@ -181,13 +185,23 @@ test("untrusted discovery endpoints, loose file modes and symlinked tokens fail 
     good.polls.splice(0);
     await good.oauth.finish(await good.oauth.start());
     const file = oauthFile(good.config);
-    await fs.chmod(file, 0o644);
-    await assert.rejects(() => good.oauth.token(), /owner-only/);
-    await fs.chmod(file, 0o600);
     const other = path.join(dir, "other-oauth.json");
     await fs.rename(file, other);
-    await fs.symlink(other, file);
+    await fs.symlink(other, file, "file");
     await assert.rejects(() => good.oauth.token(), /owner-only/);
+  } finally {
+    await cleanup(dir);
+  }
+});
+
+test("loose POSIX OAuth file permissions fail closed", { skip: process.platform === "win32" }, async () => {
+  const dir = await tempDir();
+  try {
+    const mock = provider(dir);
+    mock.polls.splice(0);
+    await mock.oauth.finish(await mock.oauth.start());
+    await fs.chmod(oauthFile(mock.config), 0o644);
+    await assert.rejects(() => mock.oauth.token(), /owner-only/);
   } finally {
     await cleanup(dir);
   }

@@ -132,7 +132,10 @@ export class MainnetSigner {
     if (!account || !signingKeyFile)
       throw new AshError("CONFIG_INVALID", "Set ASH_NEAR_ACCOUNT and ASH_NEAR_SIGNING_KEY_FILE locally.");
     let handle;
+    let entry;
     try {
+      entry = await fs.lstat(signingKeyFile);
+      if (!entry.isFile()) throw new Error("Regular file required");
       handle = await fs.open(signingKeyFile, constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0));
     } catch {
       throw new AshError(
@@ -142,7 +145,13 @@ export class MainnetSigner {
     }
     try {
       const stat = await handle.stat();
-      if (!stat.isFile() || stat.size > 16 * 1024 || (process.platform !== "win32" && (stat.mode & 0o077) !== 0))
+      if (
+        !stat.isFile() ||
+        stat.dev !== entry.dev ||
+        stat.ino !== entry.ino ||
+        stat.size > 16 * 1024 ||
+        (process.platform !== "win32" && (stat.mode & 0o077) !== 0)
+      )
         throw new AshError(
           "UNSAFE_OPERATION",
           "Signing key file must be a regular file of at most 16 KB with permissions 600.",

@@ -190,44 +190,69 @@ test(
   },
 );
 
-test("demo stops promptly when interrupted during the automated flow", { timeout: 60_000 }, async () => {
-  let output = "";
-  const child = spawn(process.execPath, ["--import", "tsx", "src/index.ts", "demo", "--shell"], {
-    env: { PATH: process.env.PATH, ESBUILD_BINARY_PATH: process.env.ESBUILD_BINARY_PATH },
-    stdio: "pipe",
+for (const interruption of process.platform === "win32" ? ["cooperative"] : ["signal", "cooperative"]) {
+  test(`demo stops promptly during the automated flow (${interruption})`, { timeout: 60_000 }, async () => {
+    let output = "";
+    // Windows child.kill terminates the process without delivering a JS signal.
+    const cooperative = interruption === "cooperative";
+    const bootstrap = `
+      process.once("message", (message) => {
+        if (message === "interrupt-demo") {
+          process.disconnect();
+          process.emit("SIGTERM");
+        }
+      });
+      await import("./src/index.ts");
+    `;
+    const args = cooperative
+      ? ["--import", "tsx", "--input-type=module", "--eval", bootstrap, "ash-test-entry", "demo", "--shell"]
+      : ["--import", "tsx", "src/index.ts", "demo", "--shell"];
+    const child = spawn(process.execPath, args, {
+      env: {
+        PATH: process.env.PATH,
+        SystemRoot: process.env.SystemRoot,
+        ESBUILD_BINARY_PATH: process.env.ESBUILD_BINARY_PATH,
+      },
+      stdio: cooperative ? ["pipe", "pipe", "pipe", "ipc"] : "pipe",
+    });
+    let interrupted = false;
+    const stopped = new Promise<number | null>((resolve, reject) => {
+      const timer = setTimeout(() => {
+        child.kill("SIGKILL");
+        reject(new Error("Interrupted demo did not stop"));
+      }, 50_000);
+      child.stdout!.on("data", (chunk) => {
+        output += chunk;
+        if (!interrupted && output.includes("Executing with local providers")) {
+          interrupted = true;
+          if (cooperative) child.send!("interrupt-demo");
+          else child.kill("SIGTERM");
+        }
+      });
+      child.stderr!.resume();
+      child.once("error", (error) => {
+        clearTimeout(timer);
+        reject(error);
+      });
+      child.once("exit", (code) => {
+        clearTimeout(timer);
+        resolve(code);
+      });
+    });
+    try {
+      assert.equal(await stopped, 130);
+      assert.equal(interrupted, true);
+      const dir = /Private temporary data: (.+)/.exec(output)?.[1]?.trim();
+      assert.ok(dir);
+      const { promises: fs } = await import("node:fs");
+      await assert.rejects(fs.stat(path.join(dir, "server.json")), { code: "ENOENT" });
+    } finally {
+      child.kill("SIGTERM");
+      const dir = /Private temporary data: (.+)/.exec(output)?.[1]?.trim();
+      if (dir) await cleanup(dir);
+    }
   });
-  let interrupted = false;
-  const stopped = new Promise<number | null>((resolve, reject) => {
-    const timer = setTimeout(() => {
-      child.kill("SIGKILL");
-      reject(new Error("Interrupted demo did not stop"));
-    }, 50_000);
-    child.stdout.on("data", (chunk) => {
-      output += chunk;
-      if (!interrupted && output.includes("Executing with local providers")) {
-        interrupted = true;
-        child.kill("SIGTERM");
-      }
-    });
-    child.stderr.resume();
-    child.once("error", (error) => {
-      clearTimeout(timer);
-      reject(error);
-    });
-    child.once("exit", (code) => {
-      clearTimeout(timer);
-      resolve(code);
-    });
-  });
-  try {
-    assert.equal(await stopped, 130);
-    assert.equal(interrupted, true);
-  } finally {
-    child.kill("SIGTERM");
-    const dir = /Private temporary data: (.+)/.exec(output)?.[1];
-    if (dir) await cleanup(dir);
-  }
-});
+}
 
 test(
   "terminal planning and exact approvals use the shared service's authorization gates",

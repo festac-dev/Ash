@@ -50,6 +50,11 @@ Filesystem permissions and redaction do not provide disk encryption, provider
 no-retention guarantees or TEE attestation. The operator controls OS permissions,
 backups, disk encryption and credentials. Back up file-backed state while stopped.
 
+Credential files must be regular files, not symlinks. Linux/macOS enforce the
+owner-only POSIX mode checks. On Windows, protect the data directory and signing
+key with per-user NTFS permissions; Node's `chmod`/`stat.mode` values are not an
+ACL audit, and Ash does not inspect Windows ACLs.
+
 The demo ignores `.env` and configured data paths, uses temporary state and simulated
 providers, and disables notifications and verification subprocesses. Production mode
 refuses simulation; mode markers prevent mixing live and demo state.

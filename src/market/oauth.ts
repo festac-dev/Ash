@@ -40,9 +40,17 @@ export interface DeviceChallenge {
 function readState(file: string): OAuthState | null {
   let descriptor: number | undefined;
   try {
+    const entry = fs.lstatSync(file);
+    if (!entry.isFile()) throw new Error("Regular file required");
     descriptor = fs.openSync(file, constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0));
     const stat = fs.fstatSync(descriptor);
-    if (!stat.isFile() || stat.size > 64 * 1024 || (process.platform !== "win32" && (stat.mode & 0o077) !== 0))
+    if (
+      !stat.isFile() ||
+      stat.dev !== entry.dev ||
+      stat.ino !== entry.ino ||
+      stat.size > 64 * 1024 ||
+      (process.platform !== "win32" && (stat.mode & 0o077) !== 0)
+    )
       throw new Error("Private file required");
     const parsed = stateSchema.safeParse(JSON.parse(fs.readFileSync(descriptor, "utf8")));
     if (!parsed.success) throw new Error("Invalid state");
