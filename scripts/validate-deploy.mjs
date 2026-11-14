@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { load } from "js-yaml";
+const yaml = async (file) => load(await readFile(new URL("../" + file, import.meta.url), "utf8"));
+const render = await yaml("render.yaml");
+const compose = await yaml("compose.yaml");
+const railway = JSON.parse(await readFile(new URL("../railway.json", import.meta.url), "utf8"));
+const docker = await readFile(new URL("../Dockerfile", import.meta.url), "utf8");
+const unit = await readFile(new URL("../deploy/ash.service", import.meta.url), "utf8");
+assert.equal(render.services[0].numInstances, 1);
+assert.equal(render.services[0].disk.mountPath, "/var/lib/ash");
+assert.equal(render.services[0].healthCheckPath, "/readyz");
+assert.equal(railway.deploy.numReplicas, 1);
+assert.equal(railway.deploy.healthcheckPath, "/readyz");
+assert.equal(compose.services.ash.environment.NODE_ENV, "production");
+assert.deepEqual(compose.services.ash.ports, ["127.0.0.1:5050:5050"]);
+assert.equal(compose.services.ash.read_only, true);
+assert.deepEqual(compose.services.ash.ulimits.core, { soft: 0, hard: 0 });
+assert.ok(compose.services.ash.volumes.includes("ash-data:/var/lib/ash"));
+assert.match(docker, /USER node/);
+assert.match(docker, /HEALTHCHECK/);
+assert.match(docker, /ENTRYPOINT \["\/usr\/local\/bin\/ash-entrypoint"\]/);
+assert.doesNotMatch(docker, /^ENV .*ASH_SERVER_PORT=/m, "Image defaults must allow platform PORT selection");
+assert.equal((docker.match(/^FROM /gm) || []).length, 3);
+assert.match(unit, /User=ash/);
+assert.match(unit, /ProtectSystem=strict/);
+assert.match(unit, /LimitCORE=0/);
+console.log(
+  "PASS: Render, Railway, Compose, Dockerfile and systemd configuration invariants. Runtime deployment remains a separate check.",
+);

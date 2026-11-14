@@ -1,0 +1,38 @@
+[Unit]
+Description=Ash execution workspace
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ash
+Group=ash
+WorkingDirectory=/opt/ash
+Environment=NODE_ENV=production
+Environment=ASH_DATA_DIR=/var/lib/ash
+EnvironmentFile=/etc/ash/ash.env
+ExecStart=/usr/bin/node /opt/ash/dist/server/main.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=45
+KillSignal=SIGTERM
+UMask=0077
+LimitCORE=0
+StateDirectory=ash
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/ash
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,35 @@
+{
+  "executed_at": "2026-11-14T09:58:43.740Z",
+  "network": "mainnet",
+  "operation": "native NEAR self-transfer",
+  "transfer_near": "0.000001",
+  "approved_max_gas_near": "0.001",
+  "result": {
+    "network": "mainnet",
+    "verified": true,
+    "status": "FINAL",
+    "reference": "audit-fixes-20261114-native-selftest",
+    "tx_hash": "Hx2Z9svCpaNFztZoxbwQPqJGNfy4q2VCn75GXwRWwyxN",
+    "recipient_account": "0xfestac.near",
+    "amount_atomic": "1000000000000000000",
+    "actual_cost_near_atomic": "45636512500000000000",
+    "reserved_near_atomic": "901000000000000000000",
+    "replayed": false
+  },
+  "reconciliation": {
+    "network": "mainnet",
+    "verified": true,
+    "status": "FINAL",
+    "reference": "audit-fixes-20261114-native-selftest",
+    "tx_hash": "Hx2Z9svCpaNFztZoxbwQPqJGNfy4q2VCn75GXwRWwyxN",
+    "recipient_account": "0xfestac.near",
+    "amount_atomic": "1000000000000000000",
+    "actual_cost_near_atomic": "45636512500000000000",
+    "reserved_near_atomic": "901000000000000000000",
+    "replayed": true
+  },
+  "signing_enabled_after": false,
+  "gas_near": "0.0000446365125",
+  "transfer_plus_fees_near": "0.0000456365125",
+  "scope": "Native self-transfer with exact approval, finality and replay protection. Does not prove a token invoice, marketplace job or DAO payout."
+}

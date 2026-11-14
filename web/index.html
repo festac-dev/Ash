@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <script src="/assets/theme.js"></script>
+    <!-- ash-appearance -->
+    <title>Ash · Task controls</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <div id="login-screen" class="login-screen">
+      <section class="login-card" aria-labelledby="login-title">
+        <div class="logo" aria-hidden="true">ASH</div>
+        <p class="eyebrow">ASH WORKSPACE</p>
+        <h1 id="login-title">Connect to task controls</h1>
+        <form id="login-form">
+          <label for="access-token">Access code</label>
+          <input
+            id="access-token"
+            name="token"
+            type="password"
+            autocomplete="one-time-code"
+            minlength="16"
+            spellcheck="false"
+            required
+          />
+          <button id="login-button" class="primary" type="submit">Connect</button>
+        </form>
+        <p id="login-error" class="error" role="alert"></p>
+        <a class="muted small" href="/workspace#guide">Workspace tour</a>
+      </section>
+    </div>
+
+    <div id="app-screen" class="app hidden">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">ASH</span>
+          <a class="brand-sub" href="/workspace">WORKSPACE OVERVIEW</a>
+        </div>
+        <div class="status-cluster" aria-live="polite">
+          <span id="connection-pill" class="pill">connecting</span>
+          <span id="mode-pill" class="pill">mode</span>
+          <span id="engine-pill" class="pill">engine</span>
+        </div>
+        <button id="logout-button" class="ghost" type="button">Sign out</button>
+      </header>
+
+      <nav id="main-nav" class="main-nav" aria-label="Ash screens">
+        <button type="button" data-view="dashboard">Dashboard</button>
+        <button type="button" data-view="tasks">Tasks</button>
+        <button type="button" data-view="execution">Execution</button>
+        <button type="button" data-view="market">Market</button>
+        <button type="button" data-view="transactions">Transactions</button>
+        <button type="button" data-view="security">Security</button>
+        <button type="button" data-view="settings">Settings</button>
+      </nav>
+
+      <main id="main-content" class="main-content">
+        <div id="view-root"></div>
+      </main>
+
+      <footer class="footer">
+        <a href="/workspace#guide">Workspace tour</a>
+        <span id="footer-meta"></span>
+      </footer>
+    </div>
+
+    <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-head">
+        <h2 id="dialog-title">Details</h2>
+        <button id="dialog-close" class="ghost" type="button">Close</button>
+      </div>
+      <div id="dialog-body" class="dialog-body"></div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/assets/app.js"></script>
+  </body>
+</html>
