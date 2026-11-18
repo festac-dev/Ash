@@ -23,3 +23,12 @@ playwright-report/
 test-results/
 *.bak
 browser-sign-in.html
+
+# Private delivery and submission notes
+/FINAL_REPORT.md
+/VERIFICATION.md
+/HACKATHON_SUBMISSION.md
+/SUBMISSION_CHECKLIST.md
+/docs/HACKATHON.md
+/docs/FINAL_REPORT.md
+/docs/VERIFICATION.md

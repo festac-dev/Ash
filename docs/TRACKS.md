@@ -1,23 +1,19 @@
-# Ash: the six selected NEAR Hackathon tracks
+# NEAR commerce workflows
 
-Track mapping checked 14 November 2026 against [nearhackathon.com](https://nearhackathon.com/)
-and the [official rules](https://nearhackathon.com/HACKATHON.md). The submission IDs
-are `business`, `swarms`, `security`, `agents`, `realworld` and `social`. The existing
-`privacy` workstream remains available; it is not a replacement for Agent Economy.
+This reference covers the implemented CLI/API workflows, their payloads and
+payment-verification rules. The local demo uses simulated providers.
 
-| Track | Implemented behavior | Live operation |
+| Workflow | Implemented behavior | CLI operation |
 | --- | --- | --- |
-| Autonomous Business | Existing task planning, procurement and delivery; immutable revenue split from a verified sale, using exact integer allocation | `revenue-allocate`, `revenue-settle`; each contributor requires an exact final payout proof |
-| AI Swarms | Existing bounded multi-agent task execution; committed-bid validation, deterministic selection, verified pool funding and reservations | `swarm-allocate`, `swarm-settle`; verifies funding, selects the winner and records its exact payout |
-| AI Security & Defense | Typed expiring approvals, per-task budgets, guarded tools and deliverables, ledger checks; exact approval, gas and task limits plus a disk stop flag for CLI signing | `transfer-plan`, `request`, `approve`, `send`, `disable`; unauthorized or over-budget sends are refused |
-| Agent Economy | Existing live Agent Market discovery, hiring and bounded bid negotiation; verified earnings/spending, token balance and spendable limit | `agent-balance`; existing task execution handles hiring/delivery, and `mainnet verify` records hire/API token payments |
-| Real-World Money | Validated invoice and accounting export; live invoice creation starts UNPAID and exact final token settlement changes it to PAID | `invoice-create`, `invoice-settle` |
-| Social Money | Existing community bounty checks; live Sputnik approval/payout binding with one durable reputation event per proposal | `bounty-settle`; requires Approved proposal, matching DAO token-transfer terms and its final approval-execution transaction |
+| Revenue sharing | Allocate a verified sale in exact integer amounts and reconcile each contributor's payout | `revenue-allocate`, `revenue-settle` |
+| Pool allocation | Validate committed bids, select within price/capacity limits, reserve verified funding and reconcile the winner's payout | `swarm-allocate`, `swarm-settle` |
+| Transfer controls | Check recipients, value/gas limits, exact approvals and the operator stop flag | `transfer-plan`, `request`, `approve`, `send`, `disable` |
+| Agent balances | Bound spendable earnings by verified transfers, token balance and the configured limit | `agent-balance`; `mainnet verify` records completed hire/API payments |
+| Invoices | Create an UNPAID invoice and mark it PAID after exact final token settlement | `invoice-create`, `invoice-settle` |
+| Community bounties | Bind a Sputnik Approved proposal to its matching payout and record reputation once | `bounty-settle` |
 
-The named ecosystem tools in the track examples are suggestions (rules Q-011). Ash
-uses its existing Agent Market/model adapters, native NEP-141 token payments, the
-1Click quote API and compatible Sputnik treasury views. It does not need to implement
-every example application or every named protocol to cover a track.
+Ash uses Agent Market/model adapters, NEP-141 token payments, the 1Click quote API
+and compatible Sputnik treasury views. The commands below describe each operation.
 
 ## Live operations
 
@@ -110,7 +106,7 @@ allocations reserve funding and do not claim atomic escrow or execute payments.
 
 A dry quote takes `origin_asset`, `destination_asset`, `amount_atomic`, `refund_to`,
 `recipient`, and optional `slippage_bps` (0–100). Ash always sends `dry: true` and refuses
-fundable responses. There is no NEAR Intents testnet (Q-007). A dry quote creates no
+fundable responses. NEAR Intents uses mainnet. A dry quote creates no
 deposit address and does not settle an invoice. Cross-chain payment must be approved
 and performed in a wallet/Intents application before its NEAR destination event can
 be verified here.
@@ -206,12 +202,12 @@ operator authentication and refuse demo mode. Records live under
 `$ASH_DATA_DIR/mainnet/`, use private file modes, atomic writes and distinct lock files,
 and should be included in the normal quiesced data-directory backup.
 
-`mainnet evidence` rechecks finality and matching workflow state for all six selected
-tracks. It returns scoped `LIVE_VERIFIED` or `UNVERIFIED` results and the missing
+`mainnet evidence` rechecks finality and matching workflow state for the supported
+commerce categories. It returns scoped `LIVE_VERIFIED` or `UNVERIFIED` results and the missing
 evidence. Implementation metadata, arbitrary payment labels and local fixtures
 cannot establish live success. Marketplace evidence also requires a fresh settled
 job, the reviewed deliverable hash and a valid live task receipt chain. These checks
-do not determine judging scores, eligibility or every possible ecosystem integration.
+report the payment and workflow evidence available to the operator.
 
 ## Reproducible offline checks
 
@@ -222,17 +218,7 @@ npm run demo -- --headless --json
 ASH_DEMO=1 npm start -- tracks verify --json
 ```
 
-The track journey runs the six selected tracks plus optional privacy. Demo fixtures
-remain explicitly labelled. The live workflow tests use mocked provider responses to
+The local journey exercises the commerce modules and optional privacy module with
+explicitly labelled demo fixtures. The live workflow tests use mocked provider responses to
 exercise complete state transitions and failure cases without spending funds; this
 is separate from executing a wallet payment. See [DEVELOPMENT.md](DEVELOPMENT.md#tests) for the test commands.
-
-## Current live evidence
-
-The [recorded native self-transfer](evidence/native-transfer.json) reached FINAL and
-reconciled without another broadcast. It demonstrates approved signing/finality for
-Security. Sale/contributor payouts, pool settlement, marketplace delivery, paid
-invoices and DAO bounties remain unverified live. Passing local modules does not
-establish these live results or a judging outcome.
-
-[HACKATHON.md](HACKATHON.md) covers the official rules, baseline and submission links.

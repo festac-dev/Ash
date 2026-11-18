@@ -133,6 +133,20 @@ It is not a signed receipt. Its purpose is to detect deletion of the newest rece
 ash verify
 ```
 
+From a source checkout, `npm run verify -- --json` runs the same receipt checker.
+`npm run verify:tracks` is the separate command for simulated workflow modules.
+
+To reproduce a receipt check without marketplace credentials:
+
+```sh
+npm run demo -- --headless --json
+ASH_DEMO=1 ASH_DATA_DIR=/path/from/data_dir npm run verify -- --json
+```
+
+Replace `/path/from/data_dir` with the demo result's `data_dir`. The first command
+creates a fresh simulated task and its receipts. The second checks that same
+directory and returns `command: "verify"`, `ok: true` and its `receipt_count`.
+
 or inside the app:
 
 ```

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix `npm run verify` to check the receipt ledger instead of the simulated workflow modules.
+- Clarify browser sign-in and provider setup; keep personal submission notes out of public documentation.
 - Add mainnet invoice, revenue, agent-earnings, pool and DAO-bounty workflows.
 - Add operator-only NEAR signing with exact approvals, recipient limits, durable budget reservations and a stop flag.
 - Add marketplace device OAuth with private token storage and refresh.

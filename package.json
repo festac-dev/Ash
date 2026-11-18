@@ -27,7 +27,7 @@
     "cli": "node scripts/ash.mjs",
     "doctor": "node scripts/ash.mjs doctor",
     "status": "node scripts/ash.mjs status",
-    "verify": "node scripts/ash.mjs tracks verify",
+    "verify": "node scripts/ash.mjs verify",
     "export": "node scripts/ash.mjs export",
     "logs": "node scripts/ash.mjs logs",
     "server:start": "node scripts/ash.mjs server start",

@@ -1,119 +1,62 @@
 # Installing Ash
 
-Ash is a Node.js backend with a Go/Bubble Tea terminal client. There is no database server; a React browser frontend is available and the backend persists JSON state and the optional TUI is the full-screen client. The original readline shell remains available.
+Ash has a Node.js backend, a browser workspace and an optional Go terminal client.
+Task state is stored in local files.
 
 ## Requirements
 
-- **Node.js 22.13 or newer**. See [development prerequisites](DEVELOPMENT.md#prerequisites).
-- **Go 1.25 or newer** for the Bubble Tea TUI. The legacy shell works without Go.
-- npm 10 or newer.
-- A terminal at least 40 columns wide. 80×24 or larger is recommended.
-- Optional: a model provider key, and a NEAR Agent Market buyer token for live hiring.
+- Node.js 22.13+ and npm 10+.
+- Go 1.25+ for the full-screen terminal; the API-connected command shell works without Go.
+- A terminal at least 40 columns wide; 80×24 or larger is recommended.
+- A model provider and marketplace buyer credentials for live planning and hiring.
 
-## Linux
+## Install and try the demo
 
-```bash
-git clone <your-repository-url> ash
-cd ash
-npm install
-cp .env.example .env
-npm run build          # backend, browser frontend and optional Go TUI
-npm start              # starts the managed backend and opens the TUI
+```sh
+git clone https://github.com/festac-dev/Ash.git
+cd Ash
+npm ci --ignore-scripts
+npm run demo
 ```
 
-If Go is not installed, the build skips the TUI and `npm start` opens the shared API text shell. Install Go from <https://go.dev/dl/> or set `ASH_GO_BIN` to its binary, then:
+The demo ignores `.env` and existing data paths. It uses simulated providers and
+private temporary state, then opens the terminal. No credentials are needed.
+Use `npm run demo -- --headless --json` for the automated walkthrough or
+`npm run demo -- --shell` for the API-connected command shell.
 
-```bash
-npm run build:tui
+## Configure live operation
+
+Copy `.env.example` to `.env` if that file does not already exist, then configure
+your model and marketplace access using the sections below. Keep `ASH_DEMO=0` for
+live operation. Build and start:
+
+```sh
+npm run build
 npm start
 ```
 
-You can use the browser interface without Go. After `npm run build`, set a sign-in token and start the web UI:
+Without Go, the full build skips the TUI and startup uses the command shell. To
+select that shell explicitly, use `npm start -- --shell`. To add the full-screen
+terminal later, install Go from <https://go.dev/dl/> or set `ASH_GO_BIN`, then run
+`npm run build:tui`.
 
-```bash
-export ASH_SERVER_TOKEN="$(openssl rand -base64 32)"
+Browser access starts off. In the terminal press **B** to start it and **B** again
+for a one-time code. Open the printed `/workspace` URL and enter the code. In the
+command shell, type `B` and Enter. The next B closes browser access.
+
+For a standalone browser session:
+
+```sh
 npm start -- web
-# Open the printed URL and sign in with ASH_SERVER_TOKEN.
 ```
 
-`npm start -- web --open` opens the local browser and prints a one-time sign-in code. See [REMOTE.md](REMOTE.md) for the optional remote bind and TLS setup.
-
-For a first simulation run, set in `.env`:
-
-```dotenv
-ASH_DEMO=1
-ASH_MODEL_PROVIDER=demo
-ASH_DATA_DIR=.ash-data
-```
-
-The TUI starts with a dashboard. Click New task or press `N`, then use Plan task or `Ctrl+S`, `A` for approvals, `E` to execute, `T` for receipts, and `?` for help. `npm run dev -- shell` still starts the legacy readline shell.
-
-## Android Termux
-
-Termux runs Ash without a graphical desktop. The legacy shell is the most reliable path; the Go TUI can be built there if Go is installed.
-
-```bash
-pkg update
-pkg install nodejs-lts git golang
-```
-
-Go in Termux may be older than 1.25; if `npm run build:tui` fails, use the legacy shell (`npm run dev -- shell`) or install a current Go toolchain and set `ASH_GO_BIN`.
-
-```bash
-git clone <your-repository-url> ash
-cd ash
-npm install
-cp .env.example .env
-```
-
-Set a data directory inside your home directory. External/shared storage often does not support the permission bits Ash prefers:
-
-```dotenv
-ASH_DATA_DIR=/data/data/com.termux/files/home/.ash-data
-ASH_DEMO=1
-ASH_MODEL_PROVIDER=demo
-```
-
-If your keyboard or terminal does not render Unicode box drawing well:
-
-```dotenv
-ASH_UNICODE_MODE=never
-ASH_COLOR_MODE=auto
-```
-
-Then:
-
-```bash
-npm run build
-node dist/index.js
-```
-
-`npm start`/`ash` uses the TUI when it is built and falls back to the shared API text shell otherwise. `npm run dev -- shell` remains available.
-
-Termux note: `npm run dev -- shell` uses `tsx` and works, but the compiled build starts faster and uses less memory.
-
-## First run checklist
-
-1. Start Ash with `npm start` (TUI), `npm run dev -- shell` (legacy shell) or `npm start -- web` (browser UI). The client connects to the local API. The boot/legacy panel checks:
-   - core engine,
-   - security and approval gate,
-   - transaction ledger integrity,
-   - marketplace connection,
-   - AI model availability,
-   - execution engine.
-2. In the TUI press `N`; in the legacy shell type a task. Ash treats a long unrecognised line as a new task description.
-3. Choose the Ash project workstreams for the task (legacy wizard): press Enter for all seven, enter a comma-separated list such as `realworld,security`, or enter `custom` to skip project inputs.
-4. Enter a maximum budget and currency, for example `150 USDC` or `$150`.
-5. Accept or skip the optional fields.
-6. Review the generated plan.
-7. Approve it with the typed phrase, then execute.
-
-In simulation mode, agents, balances and payments are clearly labelled fakes. No network request is made to a marketplace and no real funds can move.
+Enter the printed one-time code in the browser. `ASH_SERVER_TOKEN` is the host/API
+bearer credential; it is not the browser sign-in code. `npm start -- web --open`
+also opens the browser. [Remote access](REMOTE.md) covers tunnels and HTTPS.
 
 ## Live marketplace configuration
 
-The market’s `/mcp` endpoint is OAuth-protected. Ash supports buyer consent through a
-device login; you do not need to obtain or paste a token manually:
+Ash supports buyer consent through device login:
 
 ```sh
 npm start -- market login
@@ -121,40 +64,33 @@ npm start -- market auth-status --json
 npm start -- market --json
 ```
 
-Open the verification URL and enter the code displayed in your private terminal.
-Ash stores access/refresh tokens in `$ASH_DATA_DIR/secrets/market-oauth.json` with
-permissions `600`, refreshes expiring tokens and supports `market logout`. Consent
-does not fund a hire or approve a payment. Keep terminal codes and token files private.
-If you already have a buyer bearer token, manual configuration remains supported:
+Open the displayed verification URL on the official marketplace and enter the
+terminal code. Access and refresh tokens are stored privately under
+`$ASH_DATA_DIR/secrets/market-oauth.json`. `market logout` clears the saved consent.
+Login does not fund a hire or approve a payment.
+
+If you already have a buyer bearer token, configure `MARKET_API_TOKEN` or an
+owner-only file:
 
 ```dotenv
-ASH_SIMULATE=false
+ASH_DEMO=0
 MARKET_MCP_URL=https://market.near.ai/mcp
-MARKET_API_TOKEN=...
+MARKET_API_TOKEN_FILE=/absolute/path/to/market-token
 ASH_MARKET_MODE=standard
 ```
 
-For a server or unattended machine, prefer a file that only your user can read:
-
-```dotenv
-MARKET_API_TOKEN_FILE=/home/you/.config/ash/market-token
-```
-
-Do not commit `.env` or token files. They are ignored by git, but double-check with:
-
-```bash
-git status --ignored
-```
+Funding and final acceptance require the marketplace's human-facing pages.
 
 ## Model configuration
 
-Any OpenAI-compatible Chat Completions endpoint works. The base URL must include the API version path.
+For an OpenAI-compatible Chat Completions endpoint, set the provider, model and
+base URL, including its API version path. Supply a credential when required:
 
 ```dotenv
 ASH_MODEL_PROVIDER=openai-compatible
 ASH_MODEL_BASE_URL=https://api.openai.com/v1
 ASH_MODEL_NAME=gpt-4.1-mini
-ASH_MODEL_API_KEY=...
+ASH_MODEL_API_KEY_FILE=/absolute/path/to/model-key
 ```
 
 For a local Ollama server:
@@ -165,60 +101,44 @@ ASH_MODEL_NAME=llama3.1
 ASH_MODEL_BASE_URL=http://127.0.0.1:11434/v1
 ```
 
-If no model is configured, Ash still starts and shows the ledger, commands and settings, but planning is blocked with a clear error. It does not pretend to reason. You can import a reviewed plan with `plan import <file.json>` if you cannot run a model.
+Without a configured model, saved tasks and receipts remain inspectable; planning
+requires a model or an imported reviewed plan. See [configuration](CONFIGURATION.md)
+and [task commands](COMMANDS.md).
 
-## Optional Telegram notifications
+## Android Termux
 
-To send startup and task-status messages to Telegram, create a bot with @BotFather and set both values in `.env`:
+Install Node, Git and Go in Termux:
+
+```sh
+pkg update
+pkg install nodejs-lts git golang
+```
+
+Then follow the clone/install steps above. Check `node --version` and `go version`
+against the requirements. If the installed Go is too old, use the command shell
+or select a current toolchain with `ASH_GO_BIN`.
+
+Keep live state in Termux's private home directory:
 
 ```dotenv
-TELEGRAM_BOT_TOKEN=...
-TELEGRAM_CHAT_ID=...
+ASH_DATA_DIR=/data/data/com.termux/files/home/.ash-data
 ```
 
-Message the bot once, then read the chat id from Telegram's `getUpdates` response. Verify with `npm start -- notify-test` or `ash notify-test`. Notifications are optional, best-effort and never block execution.
+For limited Unicode rendering, set `ASH_UNICODE_MODE=never`. Use
+`npm run demo -- --shell` for the simulation or `npm start -- --shell` after
+configuring live providers.
 
-## Optional remote access
+## Storage and upgrades
 
-Remote binding is off by default. For a browser interface on another device, keep Ash on loopback behind an SSH tunnel or TLS reverse proxy, or explicitly opt in:
+`ASH_DATA_DIR` defaults to `.ash-data`. It contains tasks, deliverables, approvals,
+receipts, exports, logs and saved credentials. Demo state uses its own temporary
+directory. Keep live and simulated state separate and do not commit credentials
+or runtime state.
 
-```dotenv
-ASH_SERVER_HOST=0.0.0.0
-ASH_SERVER_ALLOW_REMOTE=true
-ASH_SERVER_TOKEN=<long random value>
-ASH_SERVER_PUBLIC_URL=https://ash.example.com
-ASH_SERVER_SECURE_COOKIES=always
-```
+Before upgrading, stop Ash and back up the complete live data directory.
+[Backup and recovery](DEPLOYMENT.md#backup-and-recovery) describes the procedure.
+After updating code, run `npm ci --ignore-scripts`, `npm run build` and the relevant
+checks in [DEVELOPMENT.md](DEVELOPMENT.md).
 
-Then run `ash web`. Never expose a plain-HTTP backend to the internet. Full details, proxy examples and troubleshooting are in [REMOTE.md](REMOTE.md).
-
-## Data directory and permissions
-
-Ash creates:
-
-```
-$ASH_DATA_DIR/
-├── tasks/          # per-task state, ledger, approvals, deliverables
-├── workspaces/     # local DIY artifacts, confined to the task
-├── transactions/   # receipt chain (created on first receipt)
-├── reports/        # exported reports
-├── logs/           # ash.log and audit.log
-└── cache/          # marketplace cache and simulated market state
-```
-
-On Linux and Termux, Ash tries to create directories as `0700` and files as `0600`. Do not place the data directory on a shared drive; use a private path.
-
-## Upgrades
-
-```bash
-git pull
-npm install
-npm run build
-npm test
-```
-
-Task and receipt schemas are versioned. Ash refuses to read unsupported or corrupt records instead of silently repairing them. Back up `transactions/` before upgrading a production installation.
-
-## Uninstall
-
-Ash is self-contained. Remove the repository and, if you want to delete task history permanently, remove your data directory. There is no global service or database to uninstall.
+Removing the repository uninstalls the application. Delete the data directory
+only if you intend to permanently remove task history and saved credentials.
